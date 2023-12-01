@@ -19,18 +19,19 @@ This is a repository for building automatically Docker images for R \>=
 
 ``` mermaid
 graph LR
-    A[r-ver] --> B{umr1283}
+    A[r-ver] --> B{r and friends}
     B --> D[rstudio]
     B --> R[shiny]
 ```
 
-| Image      | Description                                                                |
-|:-----------|:---------------------------------------------------------------------------|
-| `r-ver`    | Reproducible builds with predefined version of R                           |
-| `umr1283`  | Reproducible builds with predefined version of R and some (genetics) tools |
-| `rstudio`  | RStudio server for umr1283 image                                           |
-| `shiny`    | Shiny server for umr1283 image                                             |
+| Image           | Description                                                                |
+|:----------------|:---------------------------------------------------------------------------|
+| `r-ver`         | Reproducible builds with predefined version of R                           |
+| `r and friends` | Reproducible builds with predefined version of R and some (genetics) tools |
+| `rstudio`       | RStudio server for umr1283 image                                           |
+| `shiny`         | Shiny server for umr1283 image                                             |
 
 *Note: Based on
-[rocker-org/rocker-versioned2](https://github.com/rocker-org/rocker-versioned2)
-build workflow.*
+[rocker-org/rocker-versioned2](https://github.com/rocker-org/rocker-versioned2) and
+[umr1283/docker-versioned](https://github.com/umr1283/docker-versioned)
+build workflows.*
