@@ -36,7 +36,8 @@
 }
 
 .latest_inforbio_version <- function() {
-  .get_latest_tag("inforbio/inforbio")
+  # .get_latest_tag("Ning-L/docker-versioned")
+  "latest" # Use "latest" for now, as the repo is not available
 }
 
 .latest_bcftools_version <- function() {
