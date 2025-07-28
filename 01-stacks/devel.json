@@ -1,0 +1,84 @@
+{
+  "ordered": true,
+  "TAG": "devel",
+  "LABEL": "org.opencontainers.image.licenses=\"GPL-3.0\"",
+  "group": [
+    {
+      "default": [
+        {
+          "targets": [
+            "r-ver"
+          ]
+        }
+      ],
+      "inforbio": [
+        {
+          "targets": [
+            "inforbio"
+          ]
+        }
+      ]
+    }
+  ],
+  "stack": [
+    {
+      "IMAGE": "r-ver",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/r-ver",
+        "org.opencontainers.image.description": "Reproducible builds with predefined version of R"
+      },
+      "FROM": "docker.io/library/debian:bullseye",
+      "ENV": {
+        "R_VERSION": "devel",
+        "R_HOME": "/usr/local/lib/R",
+        "CRAN": "https://cran.r-project.org",
+        "LANG": "en_GB.UTF-8",
+        "TZ": "Etc/UTC"
+      },
+      "COPY": "assets /docker_scripts",
+      "RUN": [
+        "chmod --recursive +x /docker_scripts",
+        "/docker_scripts/install_lang.sh",
+        "/docker_scripts/install_r.sh",
+        "/docker_scripts/install_git.sh",
+        "/docker_scripts/install_gitlfs.sh",
+        "/docker_scripts/install_python.sh",
+        "/docker_scripts/install_msfonts.sh"
+      ],
+      "CMD": "[\"R\"]"
+    },
+    {
+      "IMAGE": "inforbio",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/inforbio",
+        "org.opencontainers.image.description": "Reproducible builds with predefined version of R and some (genetics) tools"
+      },
+      "FROM": "docker.io/lijiaoning/r-ver:devel",
+      "ENV": {
+        "INFORBIO_VERSION": "1.10.4",
+        "PANDOC_VERSION": "3.1.8",
+        "BCFTOOLS_VERSION": "1.15.1",
+        "QUARTO_VERSION": "1.4.395",
+        "ODBC_VERSION": "8.0.27",
+        "S6_VERSION": "v2.2.0.3"
+      },
+      "COPY": "assets /docker_scripts",
+      "RUN": [
+        "chmod --recursive +x /docker_scripts",
+        "/docker_scripts/install_libs.sh",
+        "/docker_scripts/install_pandoc.sh",
+        "/docker_scripts/install_odbc.sh",
+        "/docker_scripts/install_s6v2.sh",
+        "/docker_scripts/install_crossmap.sh",
+        "/docker_scripts/install_bcftools.sh",
+        "/docker_scripts/install_vcftools.sh",
+        "/docker_scripts/install_qtltools.sh",
+        "/docker_scripts/install_r_packages.sh",
+        "/docker_scripts/install_r_umr1283.sh",
+        "/docker_scripts/install_quarto.sh",
+        "/docker_scripts/set_bash_default.sh"
+      ],
+      "CMD": "[\"R\"]"
+    }
+  ]
+}
