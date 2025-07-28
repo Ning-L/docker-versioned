@@ -46,9 +46,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build Docker images
-        run: docker-compose -f 03-compose/devel.yml build
+        run: docker compose -f 03-compose/devel.yml build
       - name: Push Docker images
-        run: docker-compose -f 03-compose/devel.yml push
+        run: docker compose -f 03-compose/devel.yml push
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
