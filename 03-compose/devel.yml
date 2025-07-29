@@ -1,0 +1,14 @@
+version: '4'
+services:
+  r-ver-devel:
+    image: lijiaoning/r-ver:devel
+    build:
+      context: ..
+      dockerfile: 02-dockerfiles/r-ver_devel.Dockerfile
+  inforbio-devel:
+    image: lijiaoning/inforbio:devel
+    depends_on:
+    - r-ver-devel
+    build:
+      context: ..
+      dockerfile: 02-dockerfiles/inforbio_devel.Dockerfile

@@ -1,6 +1,6 @@
 {
   "ordered": true,
-  "TAG": "devel",
+  "TAG": "4.5.1",
   "LABEL": "org.opencontainers.image.licenses=\"GPL-3.0\"",
   "group": [
     {
@@ -29,7 +29,7 @@
       },
       "FROM": "docker.io/library/debian:bullseye",
       "ENV": {
-        "R_VERSION": "devel",
+        "R_VERSION": "4.5.1",
         "R_HOME": "/usr/local/lib/R",
         "CRAN": "https://cran.r-project.org",
         "LANG": "en_GB.UTF-8",
@@ -45,7 +45,21 @@
         "/docker_scripts/install_python.sh",
         "/docker_scripts/install_msfonts.sh"
       ],
-      "CMD": "[\"R\"]"
+      "CMD": "[\"R\"]",
+      "tags": [
+        "docker.io/lijiaoning/r-ver:4.5.1",
+        "docker.io/lijiaoning/r-ver:latest"
+      ],
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ],
+      "cache-from": [
+        "docker.io/lijiaoning/r-ver:4.5.1"
+      ],
+      "cache-to": [
+        "type=inline"
+      ]
     },
     {
       "IMAGE": "inforbio",
@@ -53,7 +67,7 @@
         "org.opencontainers.image.title": "lijiaoning/inforbio",
         "org.opencontainers.image.description": "Reproducible builds with predefined version of R and some (genetics) tools"
       },
-      "FROM": "docker.io/lijiaoning/r-ver:devel",
+      "FROM": "docker.io/lijiaoning/r-ver:4.5.1",
       "ENV": {
         "INFORBIO_VERSION": "latest",
         "PANDOC_VERSION": "3.7.0.2",
@@ -77,7 +91,11 @@
         "/docker_scripts/install_quarto.sh",
         "/docker_scripts/set_bash_default.sh"
       ],
-      "CMD": "[\"R\"]"
+      "CMD": "[\"R\"]",
+      "tags": [
+        "docker.io/lijiaoning/inforbio:4.5.1",
+        "docker.io/lijiaoning/inforbio:latest"
+      ]
     }
   ]
 }
