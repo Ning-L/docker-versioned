@@ -617,12 +617,12 @@ write_matrix <- function(
 
   if (!latest) {
     jsonlite::write_json(
-      x = list(r_version = r_versions, group = "server"),
-      path = sub("\\.json", "_server.json", matrix_path),
+      x = list(r_version = r_versions, group = "umr"),
+      path = sub("\\.json", "_umr.json", matrix_path),
       pretty = TRUE,
       auto_unbox = FALSE
     )
-    message(sprintf('  * "%s"', sub("\\.json", "_server.json", matrix_path)))
+    message(sprintf('  * "%s"', sub("\\.json", "_umr.json", matrix_path)))
   }
 
   invisible()
