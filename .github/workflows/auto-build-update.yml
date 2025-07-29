@@ -55,11 +55,11 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "ci: automatic weekly build update"
+          commit-message: "ci: automatic monthly build update"
           signoff: false
-          branch: weekly-build-updates
+          branch: monthly-build-updates
           delete-branch: true
-          title: "Automatic weekly build update"
+          title: "Automatic monthly build update"
   check-devel:
     runs-on: ubuntu-latest
     if: ${{ true }}
