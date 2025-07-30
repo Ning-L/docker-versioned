@@ -16,7 +16,7 @@ options(width = 120)
 write_stacks(
   docker_repository = unlist(strsplit(args[[1]], ",")),
   stack_file = "01-stacks/devel.json",
-  min_version = "4.5",
+  min_version = "4.3",
   debian = args[[2]],
   registry = "docker.io",
   inforbio = "latest",

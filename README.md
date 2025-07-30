@@ -13,7 +13,7 @@ Push](https://github.com/Ning-L/docker-versioned/actions/workflows/auto-build-up
 <!-- badges: end -->
 
 This is a repository for building automatically Docker images for R \>=
-4.5.0.
+4.3.0.
 
 ``` mermaid
 graph LR
