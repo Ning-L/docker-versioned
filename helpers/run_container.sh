@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function run_container() {
-  DIRMOUNT=/media # or /Isiprod1
+  DIRMOUNT=/media # HERE after to be adapted to the new server structure
 
   if [ -z "$1" ]; then
     echo "Error 1: Missing project directory name!"

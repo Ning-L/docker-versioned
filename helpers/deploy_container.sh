@@ -4,14 +4,14 @@ function deploy_container() {
   DIRMOUNT=/media # or /Isiprod1
 
   if [ -z "$1" ]; then
-    echo "Error 1: Missing Docker image name, i.e., \"r-ver\", \"umr1283\", \"rstudio\", \"ssh\", or \"shiny\"!"
+    echo "Error 1: Missing Docker image name, i.e., \"r-ver\" or \"inforbio\"!"
     return 1
   else
     local IMG=$1
   fi
 
   if [ -z "$2" ]; then
-    echo "Error 2: Missing Docker image version, e.g., \"4.1.2\" or \"devel\"!"
+    echo "Error 2: Missing Docker image version, e.g., \"4.3.2\" or \"devel\"!"
     return 2
   else
     local VERSION=$2
@@ -19,10 +19,10 @@ function deploy_container() {
 
   if [ "${VERSION}" = "devel" ]; then
     local NAME="${IMG}-${VERSION}"
-    local BASEDOCKERHUB="umr1283"
+    local BASEDOCKERHUB="lijiaoning"
   else
     local NAME="${IMG}-v${VERSION}"
-    local BASEDOCKERHUB="umr1283"
+    local BASEDOCKERHUB="lijiaoning"
   fi
 
   local TMP=${DIRMOUNT}/datatmp/dockertmp
@@ -59,6 +59,7 @@ function deploy_container() {
       return 3
     fi
 
+    # HERE after to be adapted to the new server structure
     local DOCKER_DEFAULT="--detach --env \"RENV_PATHS_CACHE=/renv_cache\""
     local DOCKER_VOLUMES="--volume ${TMPRENV}:/renv_cache \
       --volume ${DIRMOUNT}:/media \
