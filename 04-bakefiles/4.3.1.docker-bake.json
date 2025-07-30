@@ -1,0 +1,65 @@
+{
+  "group": [
+    {
+      "default": [
+        {
+          "targets": [
+            "r-ver"
+          ]
+        }
+      ],
+      "umr": [
+        {
+          "targets": [
+            "inforbio"
+          ]
+        }
+      ]
+    }
+  ],
+  "target": {
+    "r-ver": {
+      "context": "./",
+      "dockerfile": "02-dockerfiles/r-ver_4.3.1.Dockerfile",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/r-ver",
+        "org.opencontainers.image.description": "Reproducible builds with predefined version of R",
+        "org.opencontainers.image.base.name": "docker.io/library/debian:bullseye"
+      },
+      "tags": [
+        "docker.io/lijiaoning/r-ver:4.3.1"
+      ],
+      "platforms": [
+        "linux/amd64",
+        "linux/arm64"
+      ],
+      "cache-from": [
+        "docker.io/lijiaoning/r-ver:4.3.1"
+      ],
+      "cache-to": [
+        "type=inline"
+      ]
+    },
+    "inforbio": {
+      "context": "./",
+      "dockerfile": "02-dockerfiles/inforbio_4.3.1.Dockerfile",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/inforbio",
+        "org.opencontainers.image.description": "Reproducible builds with predefined version of R and some (genetics) tools",
+        "org.opencontainers.image.base.name": "docker.io/lijiaoning/r-ver:4.3.1"
+      },
+      "tags": [
+        "docker.io/lijiaoning/inforbio:4.3.1"
+      ],
+      "platforms": [
+        "linux/amd64"
+      ],
+      "cache-from": [
+        ""
+      ],
+      "cache-to": [
+        ""
+      ]
+    }
+  }
+}
