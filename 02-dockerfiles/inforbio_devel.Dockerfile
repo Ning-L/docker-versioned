@@ -2,7 +2,7 @@ FROM docker.io/lijiaoning/r-ver:devel
 
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
-ENV INFORBIO_VERSION=latest
+ENV INFORBIO_VERSION=2025.07.30
 ENV PANDOC_VERSION=3.7.0.2
 ENV BCFTOOLS_VERSION=1.15.1
 ENV QUARTO_VERSION=1.8.17
