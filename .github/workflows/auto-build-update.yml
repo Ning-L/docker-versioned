@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build-devel:
     runs-on: ubuntu-latest
+    timeout-minutes: 540
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     strategy:
