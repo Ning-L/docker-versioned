@@ -41,7 +41,6 @@
         "/docker_scripts/install_lang.sh",
         "/docker_scripts/install_r.sh",
         "/docker_scripts/install_git.sh",
-        "/docker_scripts/install_gitlfs.sh",
         "/docker_scripts/install_python.sh",
         "/docker_scripts/install_msfonts.sh"
       ],
@@ -67,12 +66,7 @@
         "chmod --recursive +x /docker_scripts",
         "/docker_scripts/install_libs.sh",
         "/docker_scripts/install_pandoc.sh",
-        "/docker_scripts/install_odbc.sh",
         "/docker_scripts/install_s6v2.sh",
-        "/docker_scripts/install_crossmap.sh",
-        "/docker_scripts/install_bcftools.sh",
-        "/docker_scripts/install_vcftools.sh",
-        "/docker_scripts/install_qtltools.sh",
         "/docker_scripts/install_r_packages.sh",
         "/docker_scripts/install_quarto.sh",
         "/docker_scripts/set_bash_default.sh"
