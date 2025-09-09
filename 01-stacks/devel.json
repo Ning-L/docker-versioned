@@ -54,9 +54,9 @@
       },
       "FROM": "docker.io/lijiaoning/r-ver:devel",
       "ENV": {
-        "INFORBIO_VERSION": "2025.08.05",
+        "INFORBIO_VERSION": "2025.08.12",
         "PANDOC_VERSION": "3.7.0.2",
-        "QUARTO_VERSION": "1.8.19",
+        "QUARTO_VERSION": "1.8.21",
         "S6_VERSION": "v2.2.0.3",
         "BCFTOOLS_VERSION": "1.15.1"
       },
