@@ -1,6 +1,6 @@
 {
   "ordered": true,
-  "TAG": "4.5.0",
+  "TAG": "4.5.2",
   "LABEL": "org.opencontainers.image.licenses=\"GPL-3.0\"",
   "group": [
     {
@@ -29,7 +29,7 @@
       },
       "FROM": "docker.io/library/debian:bullseye",
       "ENV": {
-        "R_VERSION": "4.5.0",
+        "R_VERSION": "4.5.2",
         "R_HOME": "/usr/local/lib/R",
         "CRAN": "https://cran.r-project.org",
         "LANG": "en_GB.UTF-8",
@@ -46,14 +46,15 @@
       ],
       "CMD": "[\"R\"]",
       "tags": [
-        "docker.io/lijiaoning/r-ver:4.5.0"
+        "docker.io/lijiaoning/r-ver:4.5.2",
+        "docker.io/lijiaoning/r-ver:latest"
       ],
       "platforms": [
         "linux/amd64",
         "linux/arm64"
       ],
       "cache-from": [
-        "docker.io/lijiaoning/r-ver:4.5.0"
+        "docker.io/lijiaoning/r-ver:4.5.2"
       ],
       "cache-to": [
         "type=inline"
@@ -65,7 +66,7 @@
         "org.opencontainers.image.title": "lijiaoning/inforbio",
         "org.opencontainers.image.description": "Reproducible builds with predefined version of R and some (genetics) tools"
       },
-      "FROM": "docker.io/lijiaoning/r-ver:4.5.0",
+      "FROM": "docker.io/lijiaoning/r-ver:4.5.2",
       "ENV": {
         "INFORBIO_VERSION": "2025.09.09",
         "PANDOC_VERSION": "3.8.2.1",
@@ -85,7 +86,8 @@
       ],
       "CMD": "[\"R\"]",
       "tags": [
-        "docker.io/lijiaoning/inforbio:4.5.0"
+        "docker.io/lijiaoning/inforbio:4.5.2",
+        "docker.io/lijiaoning/inforbio:latest"
       ]
     }
   ]

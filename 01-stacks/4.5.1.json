@@ -46,8 +46,7 @@
       ],
       "CMD": "[\"R\"]",
       "tags": [
-        "docker.io/lijiaoning/r-ver:4.5.1",
-        "docker.io/lijiaoning/r-ver:latest"
+        "docker.io/lijiaoning/r-ver:4.5.1"
       ],
       "platforms": [
         "linux/amd64",
@@ -68,9 +67,9 @@
       },
       "FROM": "docker.io/lijiaoning/r-ver:4.5.1",
       "ENV": {
-        "INFORBIO_VERSION": "2025.08.12",
-        "PANDOC_VERSION": "3.7.0.2",
-        "QUARTO_VERSION": "1.8.21",
+        "INFORBIO_VERSION": "2025.09.09",
+        "PANDOC_VERSION": "3.8.2.1",
+        "QUARTO_VERSION": "1.9.9",
         "S6_VERSION": "v2.2.0.3",
         "BCFTOOLS_VERSION": "1.15.1"
       },
@@ -86,8 +85,7 @@
       ],
       "CMD": "[\"R\"]",
       "tags": [
-        "docker.io/lijiaoning/inforbio:4.5.1",
-        "docker.io/lijiaoning/inforbio:latest"
+        "docker.io/lijiaoning/inforbio:4.5.1"
       ]
     }
   ]
