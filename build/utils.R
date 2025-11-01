@@ -28,6 +28,9 @@
         sub("refs/tags/v*", "", unlist(.x, recursive = FALSE)[["ref"]])
       })
       tags <- tags[!grepl("[[:alpha:]]", tags)]
+      if (length(tags) == 0) {
+        return(character(0))
+      }
       tags[
         max(numeric_version(sub("\\+", ".", tags))) ==
           numeric_version(sub("\\+", ".", tags))
@@ -198,7 +201,7 @@ write_stacks <- function(
   bcftools = "1.15.1",
   pandoc = "latest"
 ) {
-  r_latest <- r_version <- NULL # only to get rif of "no visible binding for global variable"
+  r_latest <- r_version <- NULL # only to get rid of "no visible binding for global variable"
   if (!dir.exists(dirname(stack_file))) {
     dir.create(dirname(stack_file), recursive = TRUE)
   }
