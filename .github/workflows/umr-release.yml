@@ -10,7 +10,7 @@ on:
     inputs: 
       tag_suffix:
         description: 'Tag suffix'
-        default: 0
+        default: "0"
         required: true 
         type: string
 
