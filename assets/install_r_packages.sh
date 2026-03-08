@@ -24,6 +24,7 @@ apt-get update && apt-get install -y --no-install-recommends \
 
 Rscript \
   -e 'if (!require(pak, quietly = TRUE)) utils::install.packages("pak", repos = sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch))' \
+  -e 'pak::pkg_install("r-lib/rlang")' \
   -e 'pak::pkg_install(c(
     "udunits2", "units", "devtools", "usethis", "here",
     "renv", "ragg", "svglite", "rhub", "rsconnect",
