@@ -47,10 +47,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build Docker images
-        run: docker compose -f 03-compose/devel.yml build
-      - name: Push Docker images
-        run: docker compose -f 03-compose/devel.yml push
+      - name: Build r-ver Docker image
+        run: docker compose -f 03-compose/devel.yml build r-ver-devel
+      - name: Push r-ver Docker image
+        run: docker compose -f 03-compose/devel.yml push r-ver-devel
+      - name: Build inforbio Docker image
+        run: docker compose -f 03-compose/devel.yml build inforbio-devel
+      - name: Push inforbio Docker image
+        run: docker compose -f 03-compose/devel.yml push inforbio-devel
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
