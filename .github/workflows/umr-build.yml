@@ -22,7 +22,17 @@ jobs:
       - uses: actions/checkout@v3
       - id: set-matrix
         run: |
-          CONTENT=$(jq -r 'tostring' 05-matrix/github_action_matrix_all_umr.json)
+          CURR=$(cat 05-matrix/github_action_matrix_all.json)
+          PREV=$(git show HEAD~1:05-matrix/github_action_matrix_all.json 2>/dev/null || echo '{"r_version":[]}')
+          NEW=$(jq -n \
+            --argjson curr "$CURR" \
+            --argjson prev "$PREV" \
+            '$curr | .r_version = [.r_version[] | select(. as $v | ($prev.r_version | index($v)) == null)]')
+          if [ "$(echo "$NEW" | jq '.r_version | length')" -gt 0 ]; then
+            CONTENT=$(echo "$NEW" | jq 'tostring')
+          else
+            CONTENT=$(echo "$CURR" | jq 'tostring')
+          fi
           echo "matrix=${CONTENT}" >>$GITHUB_OUTPUT
   build:
     runs-on: ubuntu-latest
