@@ -54,6 +54,8 @@
 
 .r_versions_data <- function(min_version) {
   data.table::as.data.table(rversions::r_versions())[
+    !grepl("[[:alpha:]]", version)
+  ][
     i = package_version(version) >= package_version(min_version),
     j = list(
       r_version = version,
