@@ -2,8 +2,7 @@ name: Build & Push UMR
 
 on:
   workflow_run:
-    workflows: 
-      - "Create UMR-Release"
+    workflows:
       - "Build & Push Core"
     branches: main
     types: completed
