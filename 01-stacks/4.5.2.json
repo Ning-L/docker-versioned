@@ -50,8 +50,7 @@
         "docker.io/lijiaoning/r-ver:latest"
       ],
       "platforms": [
-        "linux/amd64",
-        "linux/arm64"
+        "linux/amd64"
       ],
       "cache-from": [
         "docker.io/lijiaoning/r-ver:4.5.2"
@@ -68,7 +67,7 @@
       },
       "FROM": "docker.io/lijiaoning/r-ver:4.5.2",
       "ENV": {
-        "INFORBIO_VERSION": "2025.11.01",
+        "INFORBIO_VERSION": "2026.03.08",
         "PANDOC_VERSION": "3.9",
         "QUARTO_VERSION": "1.9.30",
         "S6_VERSION": "v2.2.0.3",
