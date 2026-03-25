@@ -158,7 +158,7 @@
     r_version,
     r_latest
   )
-  template$stack[[1]]$platforms <- list("linux/amd64")
+  template$stack[[1]]$platforms <- list("linux/amd64", "linux/arm64")
   template$stack[[1]]$`cache-from` <- list(sprintf(
     "%s/%s/r-ver:%s",
     registry[1],
@@ -490,7 +490,7 @@ write_compose <- function(
         FUN = function(x) {
           x_field <- x[["platforms"]]
           if (is.null(x_field)) {
-            list("linux/amd64")
+            list("linux/amd64", "linux/arm64")
           } else {
             x_field
           }
