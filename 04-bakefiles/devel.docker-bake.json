@@ -30,7 +30,8 @@
         "docker.io/lijiaoning/r-ver:devel"
       ],
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ],
       "cache-from": [
         ""
@@ -51,7 +52,8 @@
         "docker.io/lijiaoning/inforbio:devel"
       ],
       "platforms": [
-        "linux/amd64"
+        "linux/amd64",
+        "linux/arm64"
       ],
       "cache-from": [
         ""
