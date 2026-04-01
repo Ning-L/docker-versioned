@@ -35,6 +35,10 @@
     })()
 }
 
+.latest_rstudio_version <- function() {
+  .get_latest_tag("rstudio/rstudio")
+}
+
 .latest_inforbio_version <- function() {
   # "latest" # Use "latest" for now, as the repo is not available
   .get_latest_tag("Ning-L/docker-versioned")
@@ -88,6 +92,7 @@
   registry,
   stack_file,
   r_version,
+  rstudio_version,
   inforbio_version,
   bcftools_version,
   quarto_version,
@@ -118,6 +123,19 @@
   template$stack[[2]]$ENV$QUARTO_VERSION <- quarto_version
   template$stack[[2]]$ENV$PANDOC_VERSION <- pandoc_version
 
+  # rstudio
+  template$stack[[3]]$labels$org.opencontainers.image.title <- sub(
+    "[^/]*",
+    docker_repository,
+    template$stack[[3]]$labels$org.opencontainers.image.title
+  )
+  template$stack[[3]]$FROM <- .update_json_from(
+    text = template$stack[[3]]$FROM,
+    registry = registry,
+    docker_repository = docker_repository
+  )
+  template$stack[[3]]$ENV$RSTUDIO_VERSION <- rstudio_version
+
   jsonlite::write_json(template, stack_file, pretty = TRUE, auto_unbox = TRUE)
   message(sprintf('Updating "%s" with latest versions.', stack_file))
   invisible(stack_file)
@@ -126,6 +144,7 @@
 .write_stack <- function(
   base,
   r_version,
+  rstudio_version,
   debian_version,
   inforbio_version,
   quarto_version,
@@ -183,6 +202,20 @@
     r_latest
   )
 
+  # rstudio
+  template$stack[[3]]$FROM <- sprintf(
+    "%s/%s/inforbio:%s",
+    registry[1],
+    base[1],
+    r_version
+  )
+  template$stack[[3]]$ENV$RSTUDIO_VERSION <- rstudio_version
+  template$stack[[3]]$tags <- .generate_tags(
+    sprintf("%s/%s/rstudio", registry, base),
+    r_version,
+    r_latest
+  )
+
   jsonlite::write_json(template, output_path, pretty = TRUE, auto_unbox = TRUE)
 
   message(sprintf('  * "%s"', output_path))
@@ -195,6 +228,7 @@ write_stacks <- function(
   min_version = "4.1",
   debian = NULL,
   registry = "docker.io",
+  rstudio = "latest",
   inforbio = "latest",
   quarto = "latest",
   bcftools = "1.15.1",
@@ -211,6 +245,11 @@ write_stacks <- function(
   ]
 
   r_latest_version <- r_versions_dt[(r_latest), r_version]
+  if (rstudio == "latest") {
+    rstudio_latest_version <- .latest_rstudio_version()
+  } else {
+    rstudio_latest_version <- rstudio
+  }
   if (inforbio == "latest") {
     inforbio_latest_version <- .latest_inforbio_version()
   } else {
@@ -237,6 +276,7 @@ write_stacks <- function(
     registry = registry,
     stack_file = stack_file,
     r_version = r_latest_version,
+    rstudio_version = rstudio_latest_version,
     inforbio_version = inforbio_latest_version,
     bcftools_version = bcftools_latest_version,
     quarto_version = quarto_latest_version,
@@ -254,6 +294,7 @@ write_stacks <- function(
       } else {
         debian
       },
+      rstudio_version = rstudio_latest_version,
       inforbio_version = inforbio_latest_version,
       quarto_version = quarto_latest_version,
       pandoc_version = pandoc_latest_version,
@@ -625,6 +666,14 @@ write_matrix <- function(
       auto_unbox = FALSE
     )
     message(sprintf('  * "%s"', sub("\\.json", "_umr.json", matrix_path)))
+
+    jsonlite::write_json(
+      x = list(r_version = r_versions, group = "server"),
+      path = sub("\\.json", "_server.json", matrix_path),
+      pretty = TRUE,
+      auto_unbox = FALSE
+    )
+    message(sprintf('  * "%s"', sub("\\.json", "_server.json", matrix_path)))
   }
 
   invisible()

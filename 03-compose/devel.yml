@@ -12,3 +12,10 @@ services:
     build:
       context: ..
       dockerfile: 02-dockerfiles/inforbio_devel.Dockerfile
+  rstudio-devel:
+    image: lijiaoning/rstudio:devel
+    depends_on:
+    - inforbio-devel
+    build:
+      context: ..
+      dockerfile: 02-dockerfiles/rstudio_devel.Dockerfile

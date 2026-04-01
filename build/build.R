@@ -20,6 +20,7 @@ write_stacks(
   debian = args[[2]],
   registry = "docker.io",
   inforbio = "latest",
+  rstudio = "latest",
   quarto = "latest",
   bcftools = "1.15.1",
   pandoc = "latest"
