@@ -157,7 +157,7 @@ Sys.umask(\"0002\")
 cd /
 rm -rf /tmp/*
 rm -rf R-*
-apt-get remove --purge -y $BUILDDEPS || dpkg --configure -a
+apt-get remove --purge -y $BUILDDEPS
 apt-get autoremove -y
 apt-get autoclean -y
 rm -rf /var/lib/apt/lists/*
