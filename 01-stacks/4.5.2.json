@@ -17,6 +17,13 @@
             "inforbio"
           ]
         }
+      ],
+      "server": [
+        {
+          "targets": [
+            "rstudio"
+          ]
+        }
       ]
     }
   ],
@@ -85,6 +92,24 @@
       "CMD": "[\"R\"]",
       "tags": [
         "docker.io/lijiaoning/inforbio:4.5.2"
+      ]
+    },
+    {
+      "IMAGE": "rstudio",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/rstudio",
+        "org.opencontainers.image.description": "RStudio server for inforbio image"
+      },
+      "FROM": "docker.io/lijiaoning/inforbio:4.5.2",
+      "ENV": {
+        "RSTUDIO_VERSION": "2026.01.2+418",
+        "PATH": "/usr/lib/rstudio-server/bin:$PATH"
+      },
+      "RUN": "/docker_scripts/install_rstudio.sh",
+      "CMD": "[\"/init\"]",
+      "EXPOSE": 8787,
+      "tags": [
+        "docker.io/lijiaoning/rstudio:4.5.2"
       ]
     }
   ]

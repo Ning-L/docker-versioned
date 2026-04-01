@@ -14,6 +14,13 @@
             "inforbio"
           ]
         }
+      ],
+      "server": [
+        {
+          "targets": [
+            "rstudio"
+          ]
+        }
       ]
     }
   ],
@@ -49,6 +56,27 @@
       },
       "tags": [
         "docker.io/lijiaoning/inforbio:devel"
+      ],
+      "platforms": [
+        "linux/amd64"
+      ],
+      "cache-from": [
+        ""
+      ],
+      "cache-to": [
+        ""
+      ]
+    },
+    "rstudio": {
+      "context": "./",
+      "dockerfile": "02-dockerfiles/rstudio_devel.Dockerfile",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/rstudio",
+        "org.opencontainers.image.description": "RStudio server for inforbio image",
+        "org.opencontainers.image.base.name": "docker.io/lijiaoning/inforbio:devel"
+      },
+      "tags": [
+        "docker.io/lijiaoning/rstudio:devel"
       ],
       "platforms": [
         "linux/amd64"
