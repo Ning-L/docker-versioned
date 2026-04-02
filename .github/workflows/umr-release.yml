@@ -33,13 +33,25 @@ jobs:
             CTAG="$(date '+%Y.%m.%d')-${VAR}"
           fi
           echo "ctag=${CTAG}" >>$GITHUB_OUTPUT
+      - name: Check if tag already exists
+        id: check_tag
+        run: |
+          TAG="v${{ steps.tag_id.outputs.ctag }}"
+          if git ls-remote --tags origin | grep -q "refs/tags/${TAG}$"; then
+            echo "Tag ${TAG} already exists, skipping release."
+            echo "exists=true" >>$GITHUB_OUTPUT
+          else
+            echo "exists=false" >>$GITHUB_OUTPUT
+          fi
       - name: Set prerelease name
         id: release_id
+        if: steps.check_tag.outputs.exists == 'false'
         run: |
           RELEASENAME="v${{ steps.tag_id.outputs.ctag }} (INFORBIO)"
           echo "releasename=${RELEASENAME}" >>$GITHUB_OUTPUT
       - name: Bump version and push tag
         id: tag_version
+        if: steps.check_tag.outputs.exists == 'false'
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -47,6 +59,7 @@ jobs:
           custom_tag: ${{ steps.tag_id.outputs.ctag }}
           tag_prefix: "v"
       - name: Create Release
+        if: steps.check_tag.outputs.exists == 'false'
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
