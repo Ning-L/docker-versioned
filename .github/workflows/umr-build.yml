@@ -22,8 +22,8 @@ jobs:
       - uses: actions/checkout@v4
       - id: set-matrix
         run: |
-          CURR=$(cat 05-matrix/github_action_matrix_all.json)
-          PREV=$(git show HEAD~1:05-matrix/github_action_matrix_all.json 2>/dev/null || echo '{"r_version":[]}')
+          CURR=$(cat 05-matrix/github_action_matrix_all_umr.json)
+          PREV=$(git show HEAD~1:05-matrix/github_action_matrix_all_umr.json 2>/dev/null || echo '{"r_version":[]}')
           NEW=$(jq -n \
             --argjson curr "$CURR" \
             --argjson prev "$PREV" \
