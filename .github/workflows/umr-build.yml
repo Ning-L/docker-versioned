@@ -29,9 +29,9 @@ jobs:
             --argjson prev "$PREV" \
             '$curr | .r_version = [.r_version[] | select(. as $v | ($prev.r_version | index($v)) == null)]')
           if [ "$(echo "$NEW" | jq '.r_version | length')" -gt 0 ]; then
-            CONTENT=$(echo "$NEW" | jq 'tostring')
+            CONTENT=$(echo "$NEW" | jq -r 'tostring')
           else
-            CONTENT=$(echo "$CURR" | jq 'tostring')
+            CONTENT=$(echo "$CURR" | jq -r 'tostring')
           fi
           echo "matrix=${CONTENT}" >>$GITHUB_OUTPUT
   build:
