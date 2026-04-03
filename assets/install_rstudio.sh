@@ -17,7 +17,7 @@ apt-get update && apt-get install -y --no-install-recommends \
   lsb-release \
   psmisc \
   procps \
-  python-setuptools \
+  python3-setuptools \
   sudo \
   wget \
   ca-certificates \
