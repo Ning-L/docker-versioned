@@ -17,11 +17,6 @@ apt-get update &&
     swig &&
   rm -rf /var/lib/apt/lists/*
 
-python3 -m pip --no-cache-dir install --upgrade \
-  pip \
-  setuptools \
-  virtualenv
-
 # Some TF tools expect a "python" binary
 if [ ! -e /usr/local/bin/python ]; then
   ln -s $(which python3) /usr/local/bin/python
