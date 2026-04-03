@@ -13,17 +13,18 @@ Push](https://github.com/Ning-L/docker-versioned/actions/workflows/auto-build-up
 <!-- badges: end -->
 
 This is a repository for building automatically Docker images for R \>=
-4.3.0.
+4.5.0.
 
 ``` mermaid
-graph LR
-    A[r-ver] -- (+ genetics tools) --> B[inforbio]
+graph TD
+    A[r-ver] -- (+ genetics tools) --> B[inforbio] -- (+ RStudio Server) --> C[rstudio]
 ```
 
 | Image      | Description                                                                |
 |:-----------|:---------------------------------------------------------------------------|
 | `r-ver`    | Reproducible builds with predefined version of R                           |
 | `inforbio` | Reproducible builds with predefined version of R and some (genetics) tools |
+| `rstudio`  | RStudio server based for inforbio image |
 
 *Note: Based on
 [rocker-org/rocker-versioned2](https://github.com/rocker-org/rocker-versioned2) and [umr1283/docker-versioned](https://github.com/umr1283/docker-versioned)
