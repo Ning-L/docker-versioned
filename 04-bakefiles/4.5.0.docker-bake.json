@@ -31,7 +31,7 @@
       "labels": {
         "org.opencontainers.image.title": "lijiaoning/r-ver",
         "org.opencontainers.image.description": "Reproducible builds with predefined version of R",
-        "org.opencontainers.image.base.name": "docker.io/library/debian:bullseye"
+        "org.opencontainers.image.base.name": "docker.io/library/debian:bookworm"
       },
       "tags": [
         "docker.io/lijiaoning/r-ver:4.5.0"
