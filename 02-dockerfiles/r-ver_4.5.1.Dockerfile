@@ -1,4 +1,4 @@
-FROM docker.io/library/debian:bullseye
+FROM docker.io/library/debian:bookworm
 
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
