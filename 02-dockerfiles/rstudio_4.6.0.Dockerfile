@@ -1,4 +1,4 @@
-FROM docker.io/lijiaoning/inforbio:4.5.3
+FROM docker.io/lijiaoning/inforbio:4.6.0
 
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
