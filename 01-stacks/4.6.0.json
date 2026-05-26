@@ -1,6 +1,6 @@
 {
   "ordered": true,
-  "TAG": "4.5.3",
+  "TAG": "4.6.0",
   "LABEL": "org.opencontainers.image.licenses=\"GPL-3.0\"",
   "group": [
     {
@@ -36,7 +36,7 @@
       },
       "FROM": "docker.io/library/debian:bookworm",
       "ENV": {
-        "R_VERSION": "4.5.3",
+        "R_VERSION": "4.6.0",
         "R_HOME": "/usr/local/lib/R",
         "CRAN": "https://cran.r-project.org",
         "LANG": "en_GB.UTF-8",
@@ -53,13 +53,14 @@
       ],
       "CMD": "[\"R\"]",
       "tags": [
-        "docker.io/lijiaoning/r-ver:4.5.3"
+        "docker.io/lijiaoning/r-ver:4.6.0",
+        "docker.io/lijiaoning/r-ver:latest"
       ],
       "platforms": [
         "linux/amd64"
       ],
       "cache-from": [
-        "docker.io/lijiaoning/r-ver:4.5.3"
+        "docker.io/lijiaoning/r-ver:4.6.0"
       ],
       "cache-to": [
         "type=inline"
@@ -71,7 +72,7 @@
         "org.opencontainers.image.title": "lijiaoning/inforbio",
         "org.opencontainers.image.description": "Reproducible builds with predefined version of R and some (genetics) tools"
       },
-      "FROM": "docker.io/lijiaoning/r-ver:4.5.3",
+      "FROM": "docker.io/lijiaoning/r-ver:4.6.0",
       "ENV": {
         "INFORBIO_VERSION": "2026.04.03",
         "PANDOC_VERSION": "3.9.0.2",
@@ -91,7 +92,8 @@
       ],
       "CMD": "[\"R\"]",
       "tags": [
-        "docker.io/lijiaoning/inforbio:4.5.3"
+        "docker.io/lijiaoning/inforbio:4.6.0",
+        "docker.io/lijiaoning/inforbio:latest"
       ]
     },
     {
@@ -100,7 +102,7 @@
         "org.opencontainers.image.title": "lijiaoning/rstudio",
         "org.opencontainers.image.description": "RStudio server for inforbio image"
       },
-      "FROM": "docker.io/lijiaoning/inforbio:4.5.3",
+      "FROM": "docker.io/lijiaoning/inforbio:4.6.0",
       "ENV": {
         "RSTUDIO_VERSION": "2026.04.0+526",
         "PATH": "/usr/lib/rstudio-server/bin:$PATH"
@@ -109,7 +111,8 @@
       "CMD": "[\"/init\"]",
       "EXPOSE": 8787,
       "tags": [
-        "docker.io/lijiaoning/rstudio:4.5.3"
+        "docker.io/lijiaoning/rstudio:4.6.0",
+        "docker.io/lijiaoning/rstudio:latest"
       ]
     }
   ]
