@@ -61,9 +61,9 @@
       },
       "FROM": "docker.io/lijiaoning/r-ver:devel",
       "ENV": {
-        "INFORBIO_VERSION": "2026.04.03",
+        "INFORBIO_VERSION": "2026.05.26",
         "PANDOC_VERSION": "3.9.0.2",
-        "QUARTO_VERSION": "1.9.37",
+        "QUARTO_VERSION": "1.9.38",
         "S6_VERSION": "v2.2.0.3",
         "BCFTOOLS_VERSION": "1.15.1"
       },
@@ -87,7 +87,7 @@
       },
       "FROM": "docker.io/lijiaoning/inforbio:devel",
       "ENV": {
-        "RSTUDIO_VERSION": "2026.04.0+526",
+        "RSTUDIO_VERSION": "2026.05.0+218",
         "PATH": "/usr/lib/rstudio-server/bin:$PATH"
       },
       "RUN": "/docker_scripts/install_rstudio.sh",
