@@ -27,20 +27,21 @@
   "target": {
     "r-ver": {
       "context": "./",
-      "dockerfile": "02-dockerfiles/r-ver_4.6.0.Dockerfile",
+      "dockerfile": "02-dockerfiles/r-ver_4.6.1.Dockerfile",
       "labels": {
         "org.opencontainers.image.title": "lijiaoning/r-ver",
         "org.opencontainers.image.description": "Reproducible builds with predefined version of R",
         "org.opencontainers.image.base.name": "docker.io/library/debian:bookworm"
       },
       "tags": [
-        "docker.io/lijiaoning/r-ver:4.6.0"
+        "docker.io/lijiaoning/r-ver:4.6.1",
+        "docker.io/lijiaoning/r-ver:latest"
       ],
       "platforms": [
         "linux/amd64"
       ],
       "cache-from": [
-        "docker.io/lijiaoning/r-ver:4.6.0"
+        "docker.io/lijiaoning/r-ver:4.6.1"
       ],
       "cache-to": [
         "type=inline"
@@ -48,14 +49,15 @@
     },
     "inforbio": {
       "context": "./",
-      "dockerfile": "02-dockerfiles/inforbio_4.6.0.Dockerfile",
+      "dockerfile": "02-dockerfiles/inforbio_4.6.1.Dockerfile",
       "labels": {
         "org.opencontainers.image.title": "lijiaoning/inforbio",
         "org.opencontainers.image.description": "Reproducible builds with predefined version of R and some (genetics) tools",
-        "org.opencontainers.image.base.name": "docker.io/lijiaoning/r-ver:4.6.0"
+        "org.opencontainers.image.base.name": "docker.io/lijiaoning/r-ver:4.6.1"
       },
       "tags": [
-        "docker.io/lijiaoning/inforbio:4.6.0"
+        "docker.io/lijiaoning/inforbio:4.6.1",
+        "docker.io/lijiaoning/inforbio:latest"
       ],
       "platforms": [
         "linux/amd64"
@@ -69,14 +71,15 @@
     },
     "rstudio": {
       "context": "./",
-      "dockerfile": "02-dockerfiles/rstudio_4.6.0.Dockerfile",
+      "dockerfile": "02-dockerfiles/rstudio_4.6.1.Dockerfile",
       "labels": {
         "org.opencontainers.image.title": "lijiaoning/rstudio",
         "org.opencontainers.image.description": "RStudio server for inforbio image",
-        "org.opencontainers.image.base.name": "docker.io/lijiaoning/inforbio:4.6.0"
+        "org.opencontainers.image.base.name": "docker.io/lijiaoning/inforbio:4.6.1"
       },
       "tags": [
-        "docker.io/lijiaoning/rstudio:4.6.0"
+        "docker.io/lijiaoning/rstudio:4.6.1",
+        "docker.io/lijiaoning/rstudio:latest"
       ],
       "platforms": [
         "linux/amd64"
