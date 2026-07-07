@@ -1,4 +1,4 @@
-FROM docker.io/lijiaoning/r-ver:4.5.3
+FROM docker.io/lijiaoning/r-ver:4.6.1
 
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
