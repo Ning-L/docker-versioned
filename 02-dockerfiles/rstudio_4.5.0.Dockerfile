@@ -2,7 +2,7 @@ FROM docker.io/lijiaoning/inforbio:4.5.0
 
 LABEL org.opencontainers.image.licenses="GPL-3.0"
 
-ENV RSTUDIO_VERSION=2026.08.2+200
+ENV RSTUDIO_VERSION=2026.09.0+174
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH
 
 RUN /docker_scripts/install_rstudio.sh
