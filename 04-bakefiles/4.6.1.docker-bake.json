@@ -34,8 +34,7 @@
         "org.opencontainers.image.base.name": "docker.io/library/debian:bookworm"
       },
       "tags": [
-        "docker.io/lijiaoning/r-ver:4.6.1",
-        "docker.io/lijiaoning/r-ver:latest"
+        "docker.io/lijiaoning/r-ver:4.6.1"
       ],
       "platforms": [
         "linux/amd64"
@@ -56,8 +55,7 @@
         "org.opencontainers.image.base.name": "docker.io/lijiaoning/r-ver:4.6.1"
       },
       "tags": [
-        "docker.io/lijiaoning/inforbio:4.6.1",
-        "docker.io/lijiaoning/inforbio:latest"
+        "docker.io/lijiaoning/inforbio:4.6.1"
       ],
       "platforms": [
         "linux/amd64"
@@ -78,8 +76,7 @@
         "org.opencontainers.image.base.name": "docker.io/lijiaoning/inforbio:4.6.1"
       },
       "tags": [
-        "docker.io/lijiaoning/rstudio:4.6.1",
-        "docker.io/lijiaoning/rstudio:latest"
+        "docker.io/lijiaoning/rstudio:4.6.1"
       ],
       "platforms": [
         "linux/amd64"
