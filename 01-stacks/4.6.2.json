@@ -1,0 +1,119 @@
+{
+  "ordered": true,
+  "TAG": "4.6.2",
+  "LABEL": "org.opencontainers.image.licenses=\"GPL-3.0\"",
+  "group": [
+    {
+      "default": [
+        {
+          "targets": [
+            "r-ver"
+          ]
+        }
+      ],
+      "umr": [
+        {
+          "targets": [
+            "inforbio"
+          ]
+        }
+      ],
+      "server": [
+        {
+          "targets": [
+            "rstudio"
+          ]
+        }
+      ]
+    }
+  ],
+  "stack": [
+    {
+      "IMAGE": "r-ver",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/r-ver",
+        "org.opencontainers.image.description": "Reproducible builds with predefined version of R"
+      },
+      "FROM": "docker.io/library/debian:bookworm",
+      "ENV": {
+        "R_VERSION": "4.6.2",
+        "R_HOME": "/usr/local/lib/R",
+        "CRAN": "https://cran.r-project.org",
+        "LANG": "en_GB.UTF-8",
+        "TZ": "Etc/UTC"
+      },
+      "COPY": "assets /docker_scripts",
+      "RUN": [
+        "chmod --recursive +x /docker_scripts",
+        "/docker_scripts/install_lang.sh",
+        "/docker_scripts/install_r.sh",
+        "/docker_scripts/install_git.sh",
+        "/docker_scripts/install_python.sh",
+        "/docker_scripts/install_msfonts.sh"
+      ],
+      "CMD": "[\"R\"]",
+      "tags": [
+        "docker.io/lijiaoning/r-ver:4.6.2",
+        "docker.io/lijiaoning/r-ver:latest"
+      ],
+      "platforms": [
+        "linux/amd64"
+      ],
+      "cache-from": [
+        "docker.io/lijiaoning/r-ver:4.6.2"
+      ],
+      "cache-to": [
+        "type=inline"
+      ]
+    },
+    {
+      "IMAGE": "inforbio",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/inforbio",
+        "org.opencontainers.image.description": "Reproducible builds with predefined version of R and some (genetics) tools"
+      },
+      "FROM": "docker.io/lijiaoning/r-ver:4.6.2",
+      "ENV": {
+        "INFORBIO_VERSION": "2026.10.02",
+        "PANDOC_VERSION": "3.9.0.2",
+        "QUARTO_VERSION": "1.9.38",
+        "S6_VERSION": "v2.2.0.3",
+        "BCFTOOLS_VERSION": "1.15.1"
+      },
+      "COPY": "assets /docker_scripts",
+      "RUN": [
+        "chmod --recursive +x /docker_scripts",
+        "/docker_scripts/install_libs.sh",
+        "/docker_scripts/install_pandoc.sh",
+        "/docker_scripts/install_s6v2.sh",
+        "/docker_scripts/install_r_packages.sh",
+        "/docker_scripts/install_quarto.sh",
+        "/docker_scripts/set_bash_default.sh"
+      ],
+      "CMD": "[\"R\"]",
+      "tags": [
+        "docker.io/lijiaoning/inforbio:4.6.2",
+        "docker.io/lijiaoning/inforbio:latest"
+      ]
+    },
+    {
+      "IMAGE": "rstudio",
+      "labels": {
+        "org.opencontainers.image.title": "lijiaoning/rstudio",
+        "org.opencontainers.image.description": "RStudio server for inforbio image"
+      },
+      "FROM": "docker.io/lijiaoning/inforbio:4.6.2",
+      "ENV": {
+        "RSTUDIO_VERSION": "2026.10.1+239",
+        "PATH": "/usr/lib/rstudio-server/bin:$PATH"
+      },
+      "RUN": "/docker_scripts/install_rstudio.sh",
+      "CMD": "[\"/init\"]",
+      "EXPOSE": 8787,
+      "tags": [
+        "docker.io/lijiaoning/rstudio:4.6.2",
+        "docker.io/lijiaoning/rstudio:latest"
+      ]
+    }
+  ]
+}
